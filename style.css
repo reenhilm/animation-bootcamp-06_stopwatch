@@ -1,0 +1,121 @@
+/* makes sizing simpler */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* remove default spacing */
+/* force styling of type through styling, rather than elements */
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+/* dark mode user-agent-styles */
+
+html {
+    color-scheme: dark light;
+}
+
+/* min body height */
+
+body {
+    min-height: 100vh;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+/* @media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+} */
+
+:root {
+    /* --blackish-color: #101212;
+    --trueblack-color: #000000; */
+    --secondary-color: #eeeeee;
+    --third-color: #d3d3d3;
+    --fourth-color: #F8F8F8;
+    --fifth-color: #888888;
+    --sixth-color: #e81c0b;
+    --font-family: 'Gill Sans MT', sans-serif;
+}
+
+body {
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    background-color: var(--fourth-color);
+    width: 490px;
+    height: 490px;
+    border: 14px solid var(--third-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dot {
+    z-index: 2;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--fifth-color);
+}
+
+.dot::before {
+    /* seconds */    
+    z-index: 2;
+    display: block;
+    position: relative;
+    top:-224px;
+    left:3px;
+    height: 230px;
+    width: 6px;
+    background-color: var(--fifth-color);
+    content: "";
+    transform-origin: bottom center;
+    animation: clockwise 60s infinite;
+    animation-timing-function: linear;
+}
+.dot::after {
+    /* deciseconds because milliseconds are just weird */
+    z-index: 0;
+    display: block;
+    position: relative;
+    top: -407px;
+    left: 3px;
+    height: 183px;
+    width: 5px;
+    background-color: var(--sixth-color);
+    content: "";
+    transform-origin: bottom center;    
+    animation: clockwise 3600s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes clockwise {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
